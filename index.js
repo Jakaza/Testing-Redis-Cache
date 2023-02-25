@@ -1,4 +1,5 @@
 const { createClient } = require('redis');
+const axios = require('axios');
 const redisPass = process.env['REDIS_PASS']
 const weatherApi = process.env['WEATHER_API']
 
@@ -15,10 +16,12 @@ const endPoint = (city) => `https://api.openweathermap.org/data/2.5/weather?q=${
 
 const getCurrentWeather = async (city) =>{
 
-  let data = await endPoint(city);
+  let data = await axios.get(endPoint(city))
+  data = await data.data
+
+  data.source = "API";
 
   console.log(data)
-
   
 }
 
