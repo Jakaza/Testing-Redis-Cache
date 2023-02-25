@@ -2,10 +2,11 @@ const Redis = require("ioredis");
 const axios = require('axios');
 const redisPass = process.env['REDIS_PASS']
 const weatherApi = process.env['WEATHER_API']
+const redisHost = process.env['REDIS_HOST']
 
 const redis = new Redis({
   port: 15970, // Redis port
-  host: "redis-15970.c241.us-east-1-4.ec2.cloud.redislabs.com", // Redis host
+  host: redisHost, // Redis host
   username: "default", // needs Redis >= 6
   password: redisPass,
   db: 0, // Defaults to 0
