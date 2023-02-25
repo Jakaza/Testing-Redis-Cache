@@ -10,9 +10,18 @@ const client = createClient({
     }
 });
 
+const endPoint = (city) => `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApi}`;
 
 
+const getCurrentWeather = async (city) =>{
 
+  let data = await endPoint(city);
 
+  console.log(data)
 
-console.log(client)
+  
+}
+
+const cityName = "London";
+getCurrentWeather(cityName)
+
